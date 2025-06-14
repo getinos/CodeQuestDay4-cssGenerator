@@ -70,7 +70,7 @@ async function generateMobileCSS() {
   btn.disabled = true;
 
   try {
-    const API_KEY = "YOUR_API_KEY_HERE";
+    const API_KEY = "AIzaSyAKyKvLgfA-xEKHw7UN4qGLvf8NLWQVXVk";
     const API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-pro:generateContent";
 
     const prompt = `You're a responsive web design assistant.
