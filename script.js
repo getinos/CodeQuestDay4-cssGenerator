@@ -86,7 +86,7 @@ async function generateMobileCSS() {
   CSS:
   ${currentCSS}
   
-  Your output must give the mobile version a clean and beautiful look and you can move the elements if required `;
+  Your output must give the mobile version a clean and beautiful look and you can move the elements if required and your output must not contain anything other then the css codes no other language should be used other then css `;
   
       const response = await fetch(`${API_URL}?key=${API_KEY}`, {
         method: "POST",
