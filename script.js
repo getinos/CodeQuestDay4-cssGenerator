@@ -1,3 +1,4 @@
+
 // DOM elements
 const darkModeToggle = document.getElementById('darkModeToggle');
 const htmlTab = document.getElementById('htmlTab');
@@ -43,10 +44,10 @@ generateMobileCSSBtn.addEventListener('click', generateMobileCSS);
 function updatePreviews() {
     const html = htmlCode.value;
     const css = cssCode.value;
-    const combinedContent = 
+    const combinedContent = `
       <style>${css}</style>
       ${html}
-    ;
+    `;
   
     // Update desktop preview (still a div)
     desktopPreview.innerHTML = combinedContent;
@@ -76,7 +77,7 @@ async function generateMobileCSS() {
       const API_KEY = "AIzaSyAKyKvLgfA-xEKHw7UN4qGLvf8NLWQVXVk";
       const API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent";
   
-      const prompt = You're a responsive web design assistant.
+      const prompt = `You're a responsive web design assistant.
   Given the following HTML and desktop CSS, generate optimized CSS for mobile view for any mobile or tablet
   
   HTML:
@@ -85,9 +86,9 @@ async function generateMobileCSS() {
   CSS:
   ${currentCSS}
   
-  Your output must give the mobile version a clean and beautiful look and you can move the elements if required ;
+  Your output must give the mobile version a clean and beautiful look and you can move the elements if required `;
   
-      const response = await fetch(${API_URL}?key=${API_KEY}, {
+      const response = await fetch(`${API_URL}?key=${API_KEY}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -127,16 +128,16 @@ async function generateMobileCSS() {
       }
   
       // Append mobile CSS to existing CSS
-      cssCode.value = ${currentCSS}\n\n/* Generated Mobile CSS */\n${mobileCSS};
+      cssCode.value = `${currentCSS}\n\n/* Generated Mobile CSS */\n${mobileCSS}`;
       updatePreviews();
   
       // Show success state on the button
-      btn.innerHTML = 
+      btn.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
         </svg>
         CSS Generated!
-      ;
+      `;
       btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
       btn.classList.add('bg-green-600', 'hover:bg-green-700');
   
@@ -153,8 +154,8 @@ async function generateMobileCSS() {
   }
   deviceSelect.addEventListener('change', () => {
     const [width, height] = deviceSelect.value.split(',');
-    mobilePreview.style.width = ${width}px;
-    mobilePreview.style.height = ${height}px;
+    mobilePreview.style.width = `${width}px`;
+    mobilePreview.style.height = `${height}px`;
   
     // Force re-render after size change
     updatePreviews();
